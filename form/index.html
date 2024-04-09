@@ -1,0 +1,375 @@
+code:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Letter of Recommendation</title>
+   <style>
+      body {
+         font-family: Arial, sans-serif;
+         background-color: #f2f2f2;
+         margin: 0;
+         padding: 0;
+      }
+
+      header {
+         background-color: #333;
+         color: #fff;
+         padding: 20px;
+         text-align: center;
+      }
+
+      h1 {
+         margin: 0;
+         font-size: 24px;
+      }
+
+      main {
+         padding: 20px;
+      }
+
+      form {
+         max-width: 500px;
+         margin: 0 auto;
+      }
+
+      label {
+         display: block;
+         margin-bottom: 10px;
+      }
+
+      label::after {
+         content: "*";
+         color: red;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="file"] {
+         width: 100%;
+         padding: 10px;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         box-sizing: border-box;
+         margin-bottom: 10px;
+      }
+
+      input[type="submit"] {
+         background-color: #333;
+         color: #fff;
+         padding: 10px 20px;
+         border: none;
+         border-radius: 4px;
+         cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+         background-color: #555;
+      }
+
+      small {
+         color: red;
+      }
+   </style>
+   <script>
+      function validateForm() {
+         var studentName = document.getElementById("studentname").value;
+         var studentId = document.getElementById("studentid").value;
+         var studentEmail = document.getElementById("studentemail").value;
+         var linkedinProfile = document.getElementById("linkedinprofile").value;
+         var studentMobNo = document.getElementById("studentmobno").value;
+         var competitiveExams = document.getElementsByName("competitiveexams");
+         var faculty1 = document.getElementById("faculty1").value;
+         var faculty2 = document.getElementById("faculty2").value;
+         var faculty3 = document.getElementById("faculty3").value;
+         var lor = document.getElementById("lor").value;
+
+         if (studentName == "") {
+            alert("Please enter your name");
+            return false;
+         }
+
+         if (studentId == "") {
+            alert("Please enter your student ID");
+            return false;
+         }
+
+         if (studentEmail == "") {
+            alert("Please enter your email");
+            return false;
+         }
+
+         if (linkedinProfile == "") {
+            alert("Please enter your LinkedIn profile link");
+            return false;
+         }
+
+         if (studentMobNo == "") {
+            alert("Please enter your mobile number");
+            return false;
+         }
+
+         if (competitiveExams.length == 0) {
+            alert("Please select at least one competitive exam");
+            return false;
+         }
+
+         if (faculty1 == "") {
+            alert("Please enter the name of the first faculty");
+            return false;
+         }
+
+         if (faculty2 == "") {
+            alert("Please enter the name of the second faculty");
+            return false;
+         }
+
+         if (faculty3 == "") {
+            alert("Please enter the name of the third faculty");
+            return false;
+         }
+
+         if (lor == "") {
+            alert("Please upload your LOR");
+            return false;
+         }
+
+         return true;
+      }
+   </script>
+</head>
+
+<body>
+   <header>
+      <h1>Letter Of Recommendation Form</h1>
+   </header>
+   <main>
+      <div>
+         <form action="" onsubmit="return validateForm()">
+            <div>
+               <label for="studentname">Student Name</label>
+               <input required type="text" required placeholder="Enter your Name" id="studentname">
+            </div>
+            <br>
+            <div>
+               <label for="studentid">Student ID</label>
+               <input type="text" required id="studentid" placeholder="Enter your Student Id"
+                  title="Student ID format : 22DCS053">
+            </div>
+            <br>
+            <div>
+               <label for="studentemail">Student Personal Email ID</label>
+               <input type="email" required id="studentemail" placeholder="Enter your personal E-mail ID"
+                  title="eg:student@gmail.com">
+            </div>
+            <br>
+            <div>
+               <label for="linkedinprofile">Student Linkedin Profile Link</label>
+               <input type="text" required id="linkedinprofile" placeholder="Enter your LinkedIn Profile"
+                  title="Linkedin Profile Link">
+            </div>
+            <br>
+            <div>
+               <label for="studentmobno">Student Mobile Number</label>
+               <input type="tel" required id="studentmobno" pattern="[0-9]{10}"
+                  placeholder="Enter your Mobile Number" title="Enter Your 10 digit Mobile Number">
+            </div>
+            <br>
+            <div>
+               
+               <label for="competitiveexams">Competitive Exams appeared</label>
+               <div class="gate-content">
+                  <label for="gate">
+                     <input type="radio" id="gate" name="competitiveexams" value="gate" required /> GATE
+                  </label>
+                  <div class="gate-details">
+                     <div class="gate-regno">
+                        <p>Gate Registration Number*</p>
+                        <input type="text" id="gateregno" required placeholder="Enter Your Gate Registration number" size="30" title="Gate Registration Number"/>
+                     </div>
+                     <div>
+                        <p>Have you cleared the exam?*</p>
+                        <input type="radio" name="exam" value="yes">Yes
+                        <input type="radio" name="exam" value="no" >No
+                     </div>
+                     <div class="gate-marks">
+                           <p>Marks Out of 100*</p>
+                           <input type="text" required placeholder="Enter your gate marks out of 100" title="Enter your gate marks out of 100" size="30" id="gatemarks">
+                     </div>
+                     <div class="gate-score">
+                        <p>Gate Score*</p>
+                        <input type="text" required placeholder="Enter Your Gate Score" title="Enter your gate score" id="gatescore" size="30">
+                     </div>
+                     <div class="gate-air">
+                        <p>All India Rank*</p>
+                        <input type="text" placeholder="Enter your all india rank" title="Enter your all india rank" required id="gateair" size="30">
+                     </div>
+                     <div class="gate-scorecard">
+                        <p>Gate Scorecard(PDF)*</p>
+                        <input type="file" accept=".pdf" id="gscorecard">
+                        <p style="color: red;">*Only pdf is accepted.</p>
+                     </div>
+
+                  </div>
+               </div>
+               <br>
+               <div class="gre-content">
+                  <label for="gre">
+                     <input type="radio" id="gre" name="competitiveexams" value="gre" required /> GRE
+                  </label>
+                  <div class="gre-details">
+                     <div class="gre-regno">
+                        <p>GRE Registration No*</p>
+                        <input type="text"  id="greregno"  required placeholder="Enter your registration number" title="Enter your registration number" size="30"/>
+                     </div>
+                     <div class="gre-score">
+                        <p>GRE Score*</p>
+                        <input type="text"  id="grescore"  placeholder="Enter your GRE score here"  required title="Enter your GRE score" size="30"/>
+                     </div>
+                     <div class="gre-scorecard">
+                        <p>GRE Scorecard(PDF)*</p>
+                        <input type="file" accept=".pdf" id="grescorecard">
+                        <p style="color: red;">*Only pdf is accepted.</p>
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <div class="ielts-content">
+                  <label for="ielts">
+                     <input type="radio" id="ielts" name="competitiveexams" value="ielts" required /> IELTS
+                  </label>
+                  <div class="ielts-details">
+                     <div class="ielts-candino">
+                        <p>IELTS Candidate No*</p>
+                        <input type="text"  id="ieltscandino"  required placeholder="Enter your candidate number" title="Enter your candidate number" size="30"/>
+                     </div>
+                     <div class="ielts-score">
+                        <p>IELTS Score*</p>
+                        <input type="text"  id="ieltsscore"  placeholder="Enter your IELTS score here"  required title="Enter your IELTS score" size="30"/>
+                     </div>
+                     <div class="ielts-scorecard">
+                        <p>IELTS Scorecard(PDF)*</p>
+                        <input type="file" accept=".pdf" id="ieltsscorecard">
+                        <p style="color: red;">*Only pdf is accepted.</p>
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <div class="tofel-content">
+                  <label for="tofel">
+                     <input type="radio" id="tofel" name="competitiveexams" value="tofel" required /> TOFEL
+                  </label>
+                  <div class="tofel-details">
+                     <div class="tofel-appno">
+                        <p>TOFEL Appointment Number*</p>
+                        <input type="text"  id="tofelappno" title="Enter Your Appointment Number" placeholder="Enter your Appointment Number" required size="30"/>
+                     </div>
+                     <div class="tofel-score">
+                        <p>TOFEL SCORE*</p>
+                        <input type="text"  id="tofelscore"  placeholder="Enter your TOFEL score here"  required title="Enter your TOFEL score" size="30"/>
+                     </div>
+                     <div class="tofel-scorecard">
+                        <p>TOFEL Scorecard(PDF)*</p>
+                        <input type="file" accept=".pdf" id="tofelscorecard">
+                        <p style="color: red;">*Only pdf is accepted.</p>
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <div class="cat-content">
+                  <label for="cat">
+                     <input type="radio" id="cat" name="competitiveexams" value="cat" required /> CAT
+                  </label>
+                  <div class="cat-details">
+                     <div class="cat-regno">
+                        <p>CAT Registration Number*</p>
+                        <input type="text" required id="catregno"  placeholder="Enter your CAT registration number" title="Enter your CAT registration number" size="30"/>
+                     </div>
+                     <div class="cat-scalescore">
+                        <p>Overall Scale Score*</p>
+                        <input type="text"  required id="catscalescore" title="Enter your overall scale score" placeholder="Enter your overall scale score" size="30">
+                     </div>
+                     <div class="cat-percentile">
+                        <p>Overall Percentile*</p>
+                        <input type="text" required id="catpercentile" title="Enter your overall percentile" placeholder="Enter your overall percentile" size="30">
+                     </div>
+                     <div class="cat-scorecard">
+                        <p>CAT Scorecard(PDF)*</p>
+                        <input type="file" accept=".pdf" id="catscorecard">
+                        <p style="color: red;">*Only pdf is accepted.</p>
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <div class="other-content">
+                  <label for="otherexam">
+                     <input type="radio" id="otherexam" name="competitiveexams" value="otherexam" required /> OTHER:
+                     <input type="text" id="" placeholder="mention other exams">
+                  </label>
+                  <div class="other-details">
+                     <div class="other-regno">
+                        <p>Register Number/Exam ID/Candidate Number*</p>
+                        <input type="text" required id="otherregno" title="Enter Register Number/Exam ID/Candidate Number" placeholder="Enter Register Number/Exam ID/Candidate Number" size="30">
+                     </div>
+                     <div class="other-score">
+                        <p>Score*</p>
+                        <input type="text" required id="otherscore" title="Enter your Score" placeholder="Enter your score" size="30">
+                     </div>
+                     <div class="other-scorecard">
+                        <p>Scorecard(PDF)*</p>
+                        <input type="file" accept=".pdf" id="otherscorecard">
+                        <p style="color: red;">*Only pdf is accepted.</p>
+                     </div>
+                  </div>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <div>
+               <label for="faculty1">Faculty Name 1(From whom you have taken LOR)</label>
+               <input type="text" required id="faculty1" placeholder="Enter Name of First Faculty"
+                  title="Name of first faculty">
+                  <br>
+                  <label for="fac1mail">Enter E-mail ID of Faculty 1</label>
+                  <input type="email" id="fac1mail" required title="Email-ID of faculty" placeholder="email id of faculty">
+            </div>
+            <br>
+            <div>
+               <label for="faculty2">Faculty Name 2(From whom you have taken LOR)</label>
+               <input type="text" required id="faculty2" placeholder="Enter Name of Second Faculty"
+                  title="Name of second faculty">
+                  <br>
+                  <label for="fac2mail">Enter E-mail ID of Faculty 2 </label>
+                  <input type="email" id="fac2mail" required title="Email-ID of faculty" placeholder="email id of faculty">
+            </div>
+            <br>
+            <div>
+               <label for="faculty3">Faculty Name 3(From whom you have taken LOR)</label>
+               <input type="text" required id="faculty3" placeholder="Enter Name of third Faculty"
+                  title="Name of third faculty">
+                  <br>
+                  <label for="fac3mail">Enter E-mail ID of Faculty 3 </label>
+                  <input type="email" id="fac3mail" required title="Email-ID of faculty" placeholder="email id of faculty">
+            </div>
+            <div>
+               <label for="lor">Upload LOR(if taken)</label>
+               <input type="file" required id="lor" title="Upload LOR" accept=".pdf" value="">
+               <br>
+               <small style="color: red;">Note:Merge the LORs taken from 3 faculty members and upload a single
+                  PDF file</small>
+            </div>
+            <br>
+            <div>
+               <input type="submit" id="submitbutton">
+            </div>
+            <br>
+         </form>
+      </div>
+   </main>
+   <footer></footer>
+</body>
+
+</html>
